@@ -1,0 +1,31 @@
+#!/usr/bin/python 
+# -*- coding: UTF-8 -*-
+# Copyright 2016 Li-Hao Liao
+# Licensed under the Apache License, Version 2.0
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# This is "someonethere" client python script.
+# This script will UDP broadcast "someonethere" string via 8613 port.
+# (8613 is my car number.)
+# The "udp-reply-someonethere" server will reply the domain name and IP address.
+# Reference: https://docs.python.org/2/library/socketserver.html
+
+import socket
+import sys
+
+HOST, PORT = "255.255.255.255", 8613
+data = "someonethere"
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR, 1)
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+ock.settimeout(1.0)
+
+sock.sendto(data, (HOST, PORT))
+
+print "Sent:     {}".format(data)
+try:
+  while True:
+    print "Received: {}".format(sock.recv(1024))
+except(socket.timeout):
+  pass
