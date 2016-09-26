@@ -1,0 +1,8 @@
+urs.service:
+  systemd' service file. Still have some bug. After systemd start the urs.service and the udp-reply-someonethere script is launched.
+  Put this file to /lib/systemd/system/.
+
+urs:
+  startup service file. Put this file to /etc/init.d/.
+  Make it as a default service (start during booting.)
+  $ update-rc.d urs defaults

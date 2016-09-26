@@ -1,0 +1,13 @@
+[Unit]
+Description=udp-reply-someonethere server
+After=network.target auditd.service
+Before=shutdown.target
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/usr/bin/udp-reply-someonethere
+ExecStop=/usr/bin/killall udp-reply-someonethere
+
+[Install]
+WantedBy=multi-user.target
