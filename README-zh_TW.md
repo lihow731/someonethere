@@ -2,12 +2,13 @@
 
 Someonethere 可以讓你在子網域找到其他電腦或機器。前提是要先在其他電腦上安裝此服務。
 
+This project provides twe command-line utiles.
 這個專案有兩個執行程式：
 
 "someonethere"是個在本地端執行的程式，會對UDP 8613埠廣播"someonethere"訊息。並等待一秒鐘看看是否有其他機器回應。
 
 "utp-reply-someonethere"是跑在遠端機器裡的服務(daemon or service)。此服務會在 UDP 8613 埠等待 "someonethere" 的訊息。
-當等到"someonethere"訊息之後，會回覆自己的"domain name"和"IP address"。
+當等到"someonethere"訊息之後，會回覆自己的"domain name"和"IP address"。 sender.
  
 
 ## 下載 及 安裝

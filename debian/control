@@ -1,0 +1,13 @@
+Source: someonethere
+Section: misc
+Priority: extra
+Maintainer: Li-Hao Liao (Leon Liao) <leon.liao@canonical.com>
+Build-Depends: debhelper (>= 8.0.0), dh-modaliases
+Standards-Version: 3.9.7
+Vcs-Git: https://github.com/lihow731/someonethere.git
+Vcs-Bzr: lp:~lihow731/utility/someonethere
+
+Package: someonethere
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, python
+Description: Someonethere is a solution to find machines and devices in the same sub-network.
