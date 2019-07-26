@@ -26,7 +26,6 @@ sock.sendto(data, (HOST, PORT))
 print "Sent:     {}".format(data)
 try:
   while True:
-    data, address = sock.recvfrom(1024)
-    print "Received: {} {}".format(data, address)
+    print "Received: {}".format(sock.recv(1024))
 except(socket.timeout):
   pass
