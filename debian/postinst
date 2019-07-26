@@ -6,6 +6,7 @@ case "$1" in
     configure)
        codename=`lsb_release -c | awk '{print $2}'`
        systemctl enable urs.service
+       service urs start
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

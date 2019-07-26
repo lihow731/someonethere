@@ -1,3 +1,9 @@
+someonethere (3) bionic; urgency=medium
+
+  * Start service after package installed.
+
+ -- Li-Hao Liao (Leon Liao) <leon.liao@canonical.com>  Fri, 26 Jul 2019 17:10:19 +0800
+
 someonethere (2) xenial; urgency=medium
 
   * Make sure the urs.server work.

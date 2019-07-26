@@ -2,5 +2,4 @@ README.md              /usr/share/doc/someonethere/
 LICENSE                /usr/share/doc/someonethere/
 someonethere           /usr/bin/
 udp-reply-someonethere /usr/bin/
-#urs                    /etc/init.d/
 urs.service            /lib/systemd/system/
