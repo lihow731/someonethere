@@ -1,4 +1,4 @@
-#!/usr/bin/python 
+#!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 # Copyright 2016 Li-Hao Liao
 # Licensed under the Apache License, Version 2.0
@@ -21,12 +21,12 @@ sock.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR, 1)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 sock.settimeout(1.0)
 
-sock.sendto(data, (HOST, PORT))
+sock.sendto(bytes(data, 'utf-8'), (HOST, PORT))
 
-print "Sent:     {}".format(data)
+print("Sent:     {}".format(data))
 try:
   while True:
     data, address = sock.recvfrom(1024)
-    print "Received: {} {}".format(data, address)
+    print("Received: {} {}".format(data, address))
 except(socket.timeout):
   pass

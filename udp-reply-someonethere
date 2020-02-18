@@ -1,16 +1,16 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 # Copyright 2016 Li-Hao Liao
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
 
 # just modify the code in https://docs.python.org/2/library/socketserver.html.
-import SocketServer
+import socketserver
 import socket
 
 HOSTNAME = socket.gethostname()
 
-class MyUDPHandler(SocketServer.BaseRequestHandler):
+class MyUDPHandler(socketserver.BaseRequestHandler):
     """
     This class works similar to the TCP handler class, except that
     self.request consists of a pair of data and client socket, and since
@@ -23,12 +23,16 @@ class MyUDPHandler(SocketServer.BaseRequestHandler):
         sk = self.request[1]
         #print "{} wrote:".format(self.client_address[0])
         #print data
-        if data == "someonethere":
+        if data.decode("utf-8") == "someonethere":
           # Reference: Alexander's answer in http://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib
           HOST = [l for l in ([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1], [[(s.connect(('8.8.8.8', 53)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]]) if l][0][0]
-          sk.sendto(HOSTNAME +": "+ HOST, self.client_address)
+          sk.sendto(bytes(HOSTNAME +": "+ HOST, 'utf-8'), self.client_address)
+        else:
+          pass
+          # print(str(data))
+
 
 if __name__ == "__main__":
     PORT = 8613
-    server = SocketServer.UDPServer(('', PORT), MyUDPHandler)
+    server = socketserver.UDPServer(('', PORT), MyUDPHandler)
     server.serve_forever()
